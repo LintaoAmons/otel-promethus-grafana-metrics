@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics Demo Frontend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .counter {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .status {
+            color: green;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Metrics Demo Frontend</h1>
+    
+    <div>
+        <h2>Counter Metrics</h2>
+        <div class="counter">Button Clicks: <span id="clickCount">0</span></div>
+        <button onclick="incrementCounter()">Click Me!</button>
+    </div>
+    
+    <div>
+        <h2>Histogram Metrics</h2>
+        <button onclick="recordLatency()">Record Random Latency</button>
+    </div>
+    
+    <div>
+        <h2>Status</h2>
+        <div id="status" class="status">Ready to send metrics...</div>
+    </div>
+
+    <script type="module" src="metrics.js"></script>
+</body>
+</html>

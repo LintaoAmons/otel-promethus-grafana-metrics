@@ -1,0 +1,33 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  batch:
+  resource:
+    attributes:
+      - key: service.name
+        action: upsert
+        from_attribute: service.name
+      - key: service.version
+        action: upsert
+        from_attribute: service.version
+
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:9464"
+    namespace: "demo"
+    const_labels:
+      environment: "demo"
+  # debug:
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [batch, resource]
+      exporters: [prometheus]

@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname -- "$0")/.."
+
+# Configuration
+GO_VERSION="1.21"
+
+docker run --rm -v "$(pwd):/workspace" -it -w /workspace golang:${GO_VERSION} sh -c "${@-bash}"

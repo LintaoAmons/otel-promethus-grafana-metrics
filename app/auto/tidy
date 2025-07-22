@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname -- "$0")/.."
+
+auto/dev-env "go mod tidy"
